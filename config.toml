@@ -1,0 +1,5 @@
+baseURL = 'http://ctf.krloer.com'
+languageCode = 'en-us'
+title = "krloer's CTF site"
+theme = 'ananke'
+
