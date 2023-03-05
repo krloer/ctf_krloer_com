@@ -1,5 +1,5 @@
 ---
-title: "LACTF Pwn Bot"
+title: "PWC reversing Diophantus"
 date: 2023-03-05T21:24:00-08:00
 summary: "Simple reversing challenge, bruteforcing a set of diophantine equations"
 tags: ["reversing"]
