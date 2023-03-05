@@ -75,7 +75,7 @@ payload += p64(puts_plt)
 payload += p64(exe.sym["main"])
 ```
 
-We call main at the end, so were will be asked for input again and can send a payload with system("/bin/sh"). This first payload leaks the address of puts in libc, which, since we know the libc version, allows us to calculate and store the base address of libc. We also decide to log the address of puts in libc as a sanity check:
+We call main at the end, so we will be asked for input again and can send a payload with system("/bin/sh"). This first payload leaks the address of puts in libc, which, since we know the libc version, allows us to calculate and store the base address of libc. We also decide to log the address of puts in libc as a sanity check:
 
 ```py
 recieved = p.recvline().strip()
