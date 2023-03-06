@@ -1,7 +1,7 @@
 ---
-title: "Vaccine Ret2Libc"
+title: "Vaccine Ret2Libc (pwn 50)"
 date: 2023-03-05T02:53:20-08:00
-tags: ["pwn", "scanf", "overflow"]
+tags: ["pwn", "scanf", "overflow", "ret2libc"]
 ---
 
 ### Ret2libc with unknown libc
