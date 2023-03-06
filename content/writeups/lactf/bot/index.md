@@ -2,11 +2,11 @@
 title: "Bot (pwn easy)"
 date: 2023-03-05T02:53:20-08:00
 summary: "Intermediate ret2libc challenge solved by writing a rop chain to get a shell"
-tags: ["pwn", "pwntools", "ret2libc", "rop", "ropchain"]
+tags: ["pwn", "pwntools", "ret2libc", "rop", "ropchain", "ret2text"]
 ---
 
-Classic ret2libc challenge.
-There is no obvious shortcut, so we might need to write a ropchain.
+This challenge should be an easy ret2text, but I heavily overcomplicated it during the event. Considering we were provided a libc, I figured I should use it, even though there are instructions included in the program that read flag.txt.
+I will first explain how it should be done with a ret2text, then I will show how I did it with a ret2libc ropchain.
 <!-- more -->
 
 We get the bot executable, libc, ld, Dockerfile and the bot.c code.
@@ -55,7 +55,34 @@ After setting a breakpoint right before the return of main, continuing and inspe
 ![return pointer of main](./images/gdb2.png "return pointer of main")
 ![calculating offset](./images/gdb3.png "calculating offset")
 
-Since the result was 30 and we have already sent 4 A's we change our python code to send a total of 34 A's, which should give us control of the instruction pointer. Now we need to leak a libc address to find the base and use that to call system to pop a shell. We choose to leak the address of puts as we know from the c code that it is being used in the program.
+Since the result was 30 and we have already sent 4 A's we change our python code to send a total of 34 A's, which should give us control of the instruction pointer. 
+
+This is where I went wrong and started leaking addresses for a ret2libc attack. What I should have done, as mentioned at the start, was to return to inside of the if where `system("cat flag.txt")` gets called. A quick look in gdb after running `disassemble main` lets us know that returning to 0x40128e, 0x401295 or 0x40129a should all work, since theyre between the jne (jump if give_flag != 1) and the call of system.
+
+![finding win address](./images/gdb_ret2text.png "finding win address")
+
+Using this this our full exploit becomes the following python code, and we get a flag (remember to create a flag.txt locally to test). If you want to see the ret2libc approach, keep scrolling.
+
+```py
+from pwn import *
+
+p = process("./bot")
+
+payload = b"please please please give me the flag"
+payload += b"\x00" # string terminate for strcmp
+payload += b"A"*34 # offset after initial string
+payload += p64(0x40128e)
+
+p.recvline()
+p.sendline(payload)
+
+p.interactive()
+```
+
+![getting flag](./images/flag_ret2text.png "getting flag")
+<!-- more -->
+
+If we do want to ret2libc like I did, we first need to use our instruction pointer control to leak a libc address,find the base of libc and use that to call system and pop a shell. I chose to leak the address of puts as we know from the c code that it is being used in the program.
 
 To make our debugging easier we use pwninit to link our executable with the given libraries and create a solve.py template for us. We wish to use puts to print the address of puts in libc. For that to happen we need the RIP to point at a pop rdi instruction, then the address of puts in the GOT and the address of puts in the PLT. We find a `pop rdi; ret` instruction at 0x40133b with ropper, and use the pwn library for the rest. Our payload now looks like this:
 
