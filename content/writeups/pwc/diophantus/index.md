@@ -1,8 +1,8 @@
 ---
-title: "PWC reversing Diophantus"
+title: "Diophantus (rev 300)"
 date: 2023-03-05T21:24:00-08:00
 summary: "Simple reversing challenge, bruteforcing a set of diophantine equations"
-tags: ["reversing"]
+tags: ["reversing", "bruteforce"]
 ---
 
 Using python to bruteforce a password matching 
