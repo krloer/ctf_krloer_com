@@ -2,7 +2,7 @@
 title: "Roast Beef (forensics 500)"
 date: 2023-03-06T20:54:00-08:00
 summary: "Extracting and cracking a password hash from a kerberos authentication"
-tags: ["forensics", "windows", "kerberos", "password cracking", "hashcat"]
+tags: ["forensics", "kerberos", "password cracking", "hashcat"]
 ---
 
 This challenge provided a pcapng capture of a kerberos authentication request, and our task was to crack the password used in this request.
