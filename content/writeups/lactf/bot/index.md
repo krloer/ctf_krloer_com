@@ -1,5 +1,5 @@
 ---
-title: "LACTF Pwn Bot"
+title: "Bot (pwn easy)"
 date: 2023-03-05T02:53:20-08:00
 summary: "Intermediate ret2libc challenge solved by writing a rop chain to get a shell"
 tags: ["pwn", "pwntools", "ret2libc", "rop", "ropchain"]
