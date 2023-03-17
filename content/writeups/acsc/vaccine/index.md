@@ -1,5 +1,5 @@
 ---
-title: "Vaccine Ret2Libc (pwn 50)"
+title: "Vaccine (pwn 50)"
 date: 2023-03-05T02:53:20-08:00
 tags: ["pwn", "scanf", "overflow", "ret2libc", "ropchain", "libc database"]
 ---
