@@ -6,9 +6,10 @@ tags: ["forensics", "kerberos", "password cracking", "hashcat"]
 ---
 
 This challenge provided a pcapng capture of a kerberos authentication request, and our task was to crack the password used in this request.
+ <!--more-->
+
 It was one of the two 500 point challenges from the PWC CTF NTNU Trondheim 2023, and noone sloved it during the event.
 I solved it after the event with a lot of support and research from https://github.com/felixalbrigtsen.
- <!--more-->
 
 {{%attachments title="Related files" /%}}
 
