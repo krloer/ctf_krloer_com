@@ -32,7 +32,7 @@ void echo(void)
 }
 ```
 
-We see that it first uses scanf to take input and place it in the size variable. It doesn't say anything to let us know it is waiting for a number, which is why it wasnt obvious without disassembling it. Double clicking DAT_00102015 in ghidra shows us it takes a double ("%d"). It then reads 1 byte at a time into the buffer for the length that we just specified. This means that we can write as much as we want, so we have a buffer overflow vulnerability. At the end it prints from the buffer until it reaches a null byte (which will come in handy soon).
+We see that it first uses scanf to take input and place it in the size variable. It doesn't say anything to let us know it is waiting for a number, which is why it wasnt obvious without disassembling it. Double clicking DAT_00102015 in ghidra shows us it takes a decimal integer ("%d"). It then reads 1 byte at a time into the buffer for the length that we just specified. This means that we can write as much as we want, so we have a buffer overflow vulnerability. At the end it prints from the buffer until it reaches a null byte (which will come in handy soon).
 
 Running checksec on the file reveals it has PIE (ASLR), NX and Full RELRO enabled, but no stack canary. This is consistent with what we have already found, so lets run it in gdb and see what we can overwrite. Before starting i recommend running pwninit now instead of later (to link the elf with the provided libc), to ensure that any offsets found wont have to be changed after linking.
 
@@ -184,7 +184,7 @@ We needed to make sure to add 8*5 to the size were sending, because we're sendin
 
 !["getting flag"](./images/flag.png "getting flag")
 
-#### Full Exploit:
+## Full Exploit:
 ```py
 from pwn import *
 
