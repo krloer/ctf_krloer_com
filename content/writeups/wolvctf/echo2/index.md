@@ -1,6 +1,6 @@
 ---
 title: "Echo2 (pwn medium/hard)"
-date: 2023-03-19T17:20:33-08:00
+date: 2023-03-05T02:53:20-08:00
 summary: "Exploting a buffer overflow to leak stack, libc and eventually pop a shell"
 tags: ["pwn", "ropchain", "ret2libc", "pwntools", "rop", "ASLR"]
 ---
