@@ -105,7 +105,7 @@ The function then checks each bin, until it either finds an entry with the name 
 
 After creating a new squirrel it calls a function doesnt contain anythin and just returns, and contains a TODO comment. This is usually a good hint in ctf challenges, but exactly how this helps us will not become apparent until later.
 
-We now have a good understanding of how the program works, and you might have already spotted the vulnerability. Each bin has space for 4 map entries, but the while loop in `loop` lets us add 5. Additionally the `increment` function doesnt check that the bin is not already full. ThereThis means that we can create a 5th map_entry with a name and a weight om the stack, outside of the area that we are meant to be writing to, and this might be very useful.
+We now have a good understanding of how the program works, and you might already have spotted the vulnerability. Each bin has space for 4 map entries, but the while loop in `loop` lets us add 5. Additionally the `increment` function doesnt check that the bin is not already full. ThereThis means that we can create a 5th map_entry with a name and a weight om the stack, outside of the area that we are meant to be writing to, and this might be very useful.
 
 That is about all we can find with static analysis, so lets move on to dynamic analysis with gdb. We should first try to find both the flag_map and the normal map. We can find the flag map by breaking at the strncpy in `increment` before starting the program, because we know strncpy will take the address of flag_map as its destination argument.
 
