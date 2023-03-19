@@ -2,8 +2,11 @@
 title: "Diophantus (rev 300)"
 date: 2023-03-05T21:24:00-08:00
 summary: "Simple reversing challenge, bruteforcing a set of diophantine equations"
-tags: ["reversing", "bruteforce"]
+tags: ["rev", "reversing", "bruteforce"]
 ---
+
+### Classic reversing challenge
+#### PWC rev Diophantus
 
 Bruteforcing the password with python based on disassembly from ghidra to get a flag on the server.
  <!--more-->

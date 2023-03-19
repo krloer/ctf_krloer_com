@@ -4,7 +4,7 @@ date: 2023-03-17T17:03:49-08:00
 tags: ["pickle", "reverse shell", "python", "web"]
 ---
 
-### Basic python picle challenge
+### Basic python pickle challenge
 #### S2G web Pickle Postcards
 
 Exploiting pythons \__reduce__ to create a payload that when loaded on the server gives us a reverse shell.

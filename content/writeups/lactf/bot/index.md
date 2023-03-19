@@ -5,6 +5,9 @@ summary: "Intermediate ret2libc challenge solved by writing a rop chain to get a
 tags: ["pwn", "pwntools", "ret2libc", "rop", "ropchain", "ret2text"]
 ---
 
+### Simple ret2text overcomplicated to ret2libc
+#### LACTF pwn Bot
+
 This challenge should be an easy ret2text, but I heavily overcomplicated it during the event. Considering we were provided a libc, I figured I should use it, even though there are instructions included in the program that read flag.txt.
 I will first explain how it should be done with a ret2text, then I will show how I did it with a ret2libc ropchain.
 <!-- more -->

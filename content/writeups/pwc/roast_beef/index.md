@@ -5,6 +5,9 @@ summary: "Extracting and cracking a password hash from a kerberos authentication
 tags: ["forensics", "kerberos", "password cracking", "hashcat"]
 ---
 
+### Kerberos hash cracking from pcap
+#### PWC forensics Roast Beef
+
 This challenge provided a pcapng capture of a kerberos authentication request, and our task was to crack the password used in this request.
  <!--more-->
 
