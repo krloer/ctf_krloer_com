@@ -1,7 +1,7 @@
 ---
 title: "Squirrel Feeding (pwn medium)"
 date: 2023-03-05T02:53:20-08:00
-summary: "Coming soon"
+summary: "Understanding c code to eventually control program execution"
 tags: ["pwn", "c", "code analysis", "structs"]
 ---
 
