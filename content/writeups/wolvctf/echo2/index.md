@@ -46,7 +46,7 @@ Now it starts getting interesting, because with ASLR enabled we don't know what 
 
 !["leaked bytes"](./images/byte_leak.png "leaked bytes")
 
-It took me a second to figure out what is happening, but it's related to what i mentioned earlier. The printf in the echo function only takes the "%s" as a format string and a pointer to the start of the string on the stack as arguments. There is no argument to limit the ammount of output so it will print the longest ppossible string until it reaches a null byte. Since we are writing As all the way up until the return pointer on the stack and the return pointer probably doesnt contain any null bytes, it will include the instruction pointer in the output.
+It took me a second to figure out what is happening, but it's related to what i mentioned earlier. The printf in the echo function only takes the "%s" as a format string and a pointer to the start of the string on the stack as arguments. There is no argument to limit the amount of output so it will print the longest ppossible string until it reaches a null byte. Since we are writing As all the way up until the return pointer on the stack and the return pointer probably doesnt contain any null bytes, it will include the instruction pointer in the output.
 
 This is great, as we are able to leak the address of an instruction in the executable. We could theoretically use this to return to whatever we want in the future. However, you might have realised we have a more pressing issue. The leak happens after we send our input, and the program exits straight afterwards.
 
