@@ -5,7 +5,7 @@ summary: "Exploting a buffer overflow to leak stack, libc and eventually pop a s
 tags: ["pwn", "ropchain", "ret2libc", "pwntools", "rop", "ASLR"]
 ---
 
-### Advanced buffer overflow to leak and rop
+### Advanced buffer overflow to leak and ret2libc
 #### WolvCTF pwn Echo2
 
 Leaking main's address, while ropping, then leaking libc and eventually popping a shell on the server.
