@@ -42,11 +42,11 @@ To inspect the initial stack, we can run it in GDB specifying 5 as size, sending
 
 When I ran it I could find my As at **0x7fffffffdc01**, and using the `info frame` command we can see that the instruction pointer back to main is located at **0x7fffffffdd18**. Calculating the offset between these addresses tells us that we need to write 279 As before touching the instruction pointer.
 
-Now it starts getting interesting, because with ASLR enabled we don't know what we want to overwrite rip with. I first tested what would happen when specifying a 280 character input and sending 279 As (plus a newline). The output of that looks weird as there are some seemingly random bytes.
+Now it starts getting interesting, because with ASLR enabled we don't know what we want to overwrite rip with. I first tested what would happen when specifying a 280 character input and sending 279 As (plus a newline). The output of that looks weird as there are some seemingly random bytes at the end.
 
 !["leaked bytes"](./images/byte_leak.png "leaked bytes")
 
-It tooke me a second to figure out what is happening, but it's related to what i mentioned earlier. The printf in the echo function only takes the "%s" as a format string and a pointer to the start of the string on the stack as arguments. There is no argument to limit the ammount of output so it will print the longest ppossible string until it reaches a null byte. Since we are writing As all the way up until the return pointer on the stack and the return pointer probably doesnt contain any null bytes, it will include the instruction pointer in the output.
+It took me a second to figure out what is happening, but it's related to what i mentioned earlier. The printf in the echo function only takes the "%s" as a format string and a pointer to the start of the string on the stack as arguments. There is no argument to limit the ammount of output so it will print the longest ppossible string until it reaches a null byte. Since we are writing As all the way up until the return pointer on the stack and the return pointer probably doesnt contain any null bytes, it will include the instruction pointer in the output.
 
 This is great, as we are able to leak the address of an instruction in the executable. We could theoretically use this to return to whatever we want in the future. However, you might have realised we have a more pressing issue. The leak happens after we send our input, and the program exits straight afterwards.
 
