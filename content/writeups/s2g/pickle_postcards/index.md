@@ -69,7 +69,7 @@ The reverse shell generator gives us the command `export RHOST="<insert public i
 
 ![payload](./images/payload.png "payload")
 
-Sending this to the server shoudl make it run the provided command, so all we have to do now is listen on the correct port on the machine with the public IP and send the payload to the server through the "Enter saved postcard data" field on the website.
+Sending this to the server should make it run the provided command, so all we have to do now is listen on the correct port on the machine with the public IP and send the payload to the server through the "Enter saved postcard data" field on the website.
 We listen with `nc -lvp <port>` and get a shell on the webserver. Then all that's left is reading the flag.
 
 ![getting shell](./images/flag.png "getting shell")
