@@ -2,7 +2,7 @@
 title: "Softshell (pwn hard)"
 date: 2023-09-10T23:00:00-08:00
 summary: "Fun heap pwn"
-tags: ["pwn", "heap", "code analysis", "format string leak"]
+tags: ["pwn", "heap", "pointers", "code analysis", "format string leak"]
 ---
 
 ### Exploiting heap structure to get a shell
