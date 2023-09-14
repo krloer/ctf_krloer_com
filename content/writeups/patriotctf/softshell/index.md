@@ -68,7 +68,7 @@ The 5th 8 byte pointer should be controlled by our input, and we can confirm thi
 
 ![control of free pointer](./images/free_control.png "control of free pointer")
 
-We can see though pwndbg that the program tries to free 0x7473726966, which is hex for "first" - our first argument. This means whatever address we put in our first argument, we are now able to free! It should be noted for this part that because of how the heap is constructed we should use an odd number of arguments, such as 3. If we don't the address that will be used by free will be the next heap chunk size (try it yourself).
+We can see through pwndbg that the program tries to free 0x7473726966, which is hex for "first" - our first argument. This means whatever address we put in our first argument, we are now able to free! It should be noted for this part that because of how the heap is constructed we should use an odd number of arguments, such as 3. If we don't the address that will be used by free will be the next heap chunk size (try it yourself).
 
 We should now see our plan starting to take shape. If we can control the tag pointer of a command (the one stored at 0x5555555592d0 in both our above pictures), we can use the edit_tag function to edit any part of memory. This is because the edit_tag function uses the tag pointer in deciding where to edit, without performing any checks. Ideally we would use this to edit the string containing "/usr/games/cowsay moooo".
 
