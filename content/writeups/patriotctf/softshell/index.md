@@ -74,7 +74,7 @@ We should now see our plan starting to take shape. If we can control the tag poi
 
 Our plan for doing this will be to use our controlled free to free the chunk containing the tag pointer (and the cmd and arg list pointers), and then creating a new chunk editing the tag pointer position to point at the address of "/usr/games/cowsay moooo".
 
-To be able to execute our plan we need to leak an address from the heap and an address from the executable. We will use these to calculate which heap address to free, and which executable address to fill the freed chunk with. Fortunately this won't be very hard, as the view_cmd contains the following line.
+To be able to execute our plan we need to leak an address from the heap and an address from the executable. We will use these to calculate which heap address to free, and which executable address to fill the freed chunk with. Fortunately this won't be very hard, as view_cmd contains the following line.
 ```c
 printf(*(char **)(heap_pointers[2] + (long)index * 8));
 ```
