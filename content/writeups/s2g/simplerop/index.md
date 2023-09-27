@@ -8,7 +8,7 @@ tags: ["sigreturn", "rop", "pwn", "syscalls", "assembly"]
 ### Double sigreturn to call execve("/bin/sh")
 #### S2G pwn Simplerop
 
-Pwning small binary with sigreturn and multiple syscalls.
+Pwning a small binary with sigreturn and multiple syscalls.
  <!--more-->
 
 This was a very fun challenge during the S2G pwn ctf in the fall of 2023. The way I solved this challenge was slightly harder than the intended, however I learned more doing it this way and it was very fun to make it work.
