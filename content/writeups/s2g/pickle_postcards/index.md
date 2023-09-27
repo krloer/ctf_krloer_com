@@ -1,6 +1,7 @@
 ---
 title: "Pickle Postcards (web easy)"
 date: 2023-03-17T17:03:49-08:00
+summary: "Exploiting deserialization with pickle"
 tags: ["pickle", "reverse shell", "python", "web"]
 ---
 

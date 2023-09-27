@@ -1,6 +1,7 @@
 ---
 title: "Sleepy (rev medium)"
 date: 2023-03-17T17:50:30-08:00
+summary: "GOT overwrite to speed up binary"
 tags: ["rev", "gdb", "got"]
 ---
 
